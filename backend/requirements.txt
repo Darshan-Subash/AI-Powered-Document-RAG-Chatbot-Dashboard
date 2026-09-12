@@ -1,0 +1,30 @@
+# --- Core API ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+python-dotenv==1.0.1
+pydantic==2.9.2
+
+# --- Document processing ---
+pypdf==5.0.1
+python-docx==1.1.2
+
+# --- Postgres (Supabase) metadata + pgvector vector store ---
+psycopg2-binary==2.9.9
+
+# --- Supabase Storage (file uploads) ---
+supabase==2.9.1
+
+# --- Embeddings ---
+# sentence-transformers pulls in PyTorch (~120MB+ download) and is only
+# needed if EMBEDDING_PROVIDER=local in your .env. Since you're using
+# EMBEDDING_PROVIDER=azure_openai or openai, leave this commented out to
+# skip that download entirely. Uncomment it only if you switch back to
+# local/free embeddings.
+# sentence-transformers==3.1.1
+
+# --- LLM providers ---
+openai==1.51.0            # required: covers MODEL_PROVIDER=openai/azure_openai and EMBEDDING_PROVIDER=openai/azure_openai
+# anthropic==0.36.0            # uncomment if MODEL_PROVIDER=anthropic
+# google-generativeai==0.8.2   # uncomment if MODEL_PROVIDER=gemini
+# requests==2.32.3             # uncomment if MODEL_PROVIDER=ollama

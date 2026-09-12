@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Docuery — Document Intelligence</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">◆</span>
+        <span class="brand-name">Docuery</span>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">⌂</span> Dashboard
+        </button>
+        <button class="nav-item" data-view="documents">
+          <span class="nav-icon">▤</span> Documents
+        </button>
+        <button class="nav-item" data-view="chat">
+          <span class="nav-icon">✎</span> Chat
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <span id="conn-dot" class="conn-dot"></span>
+        <span id="conn-label">Checking backend…</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- DASHBOARD VIEW -->
+      <section id="view-dashboard" class="view active">
+        <header class="view-header">
+          <h1>Dashboard</h1>
+          <p>A live snapshot of your document knowledge base.</p>
+        </header>
+        <div class="stat-grid" id="stat-grid">
+          <!-- stat cards injected by app.js -->
+        </div>
+        <div class="panel">
+          <h2>Recently uploaded</h2>
+          <div id="recent-docs" class="recent-list"></div>
+        </div>
+      </section>
+
+      <!-- DOCUMENTS VIEW -->
+      <section id="view-documents" class="view">
+        <header class="view-header">
+          <h1>Documents</h1>
+          <p>Upload PDF, DOCX, or TXT files to add them to the knowledge base.</p>
+        </header>
+
+        <div id="dropzone" class="dropzone">
+          <input type="file" id="file-input" accept=".pdf,.docx,.txt" multiple hidden />
+          <div class="dropzone-inner">
+            <span class="dropzone-icon">⇪</span>
+            <p><strong>Drop files here</strong> or click to browse</p>
+            <p class="muted">PDF · DOCX · TXT</p>
+          </div>
+        </div>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Chunks</th>
+              <th>Uploaded</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="doc-table-body"></tbody>
+        </table>
+      </section>
+
+      <!-- CHAT VIEW -->
+      <section id="view-chat" class="view">
+        <div class="chat-layout">
+          <div class="chat-sidebar">
+            <button id="new-chat-btn" class="new-chat-btn">+ New chat</button>
+            <div id="chat-list" class="chat-list"></div>
+          </div>
+          <div class="chat-main">
+            <div id="chat-messages" class="chat-messages">
+              <div class="chat-empty">
+                <p>Ask a question about your uploaded documents.</p>
+                <p class="muted">Answers are grounded only in what you've uploaded — if it's not in there, you'll be told so.</p>
+              </div>
+            </div>
+            <form id="chat-form" class="chat-input-row">
+              <input id="chat-input" type="text" placeholder="Ask something about your documents…" autocomplete="off" />
+              <button type="submit" id="chat-send-btn">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

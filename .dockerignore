@@ -1,0 +1,9 @@
+**/__pycache__
+**/*.pyc
+backend/venv/
+backend/.env
+sample_docs/*.pdf
+.git
+.gitignore
+*.md
+node_modules/
